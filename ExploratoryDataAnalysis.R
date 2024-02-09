@@ -90,3 +90,9 @@ cat("Measures of Distribution for Fare:\n")
 cat(paste0("Range: ", paste(range_Fare, collapse = " - ")), "\n")
 cat(paste0("Variance: ", round(variance_Fare, 2)), "\n")
 cat(paste0("Standard Deviation: ", round(sd_Fare, 2)), "\n\n")
+
+# Calculate correlation between Age and Fare
+correlation_Age_Fare <- cor(TitanicData$Age, TitanicData$Fare, use = "complete.obs")
+
+cat("Measures of Relationship (Correlation) between Age and Fare:\n")
+cat(paste0("Correlation Coefficient: ", round(correlation_Age_Fare, 2)), "\n\n")
