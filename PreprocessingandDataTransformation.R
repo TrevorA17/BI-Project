@@ -34,3 +34,8 @@ missing_values_df <- missing_values_df[missing_values_df$Missing_Values > 0, , d
 # Print the result
 print(missing_values_df)
 
+# Install necessary package
+install.packages("mice")
+
+# Load the mice package
+library(mice)
