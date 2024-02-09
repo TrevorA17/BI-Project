@@ -39,3 +39,7 @@ set.seed(123)  # for reproducibility
 split_index <- createDataPartition(TitanicData$Survived, p = 0.8, list = FALSE)
 train_data <- TitanicData[split_index, ]
 test_data <- TitanicData[-split_index, ]
+
+# Check the dimensions of the training and testing sets
+cat("Training set size:", nrow(train_data), "\n")
+cat("Testing set size:", nrow(test_data), "\n")
