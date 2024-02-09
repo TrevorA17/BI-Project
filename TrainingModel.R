@@ -34,3 +34,8 @@ library(caret)
 library(e1071)
 library(pROC)
 
+# Split the data into training and testing sets
+set.seed(123)  # for reproducibility
+split_index <- createDataPartition(TitanicData$Survived, p = 0.8, list = FALSE)
+train_data <- TitanicData[split_index, ]
+test_data <- TitanicData[-split_index, ]
