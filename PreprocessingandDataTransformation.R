@@ -23,3 +23,14 @@ TitanicData$Sex <- factor(TitanicData$Sex, levels = sex_levels)
 
 # Display the dataset
 View(TitanicData)
+
+# Check for missing values in the dataset
+missing_values <- sapply(TitanicData, function(x) sum(is.na(x)))
+
+# Display columns with missing values and their counts
+missing_values_df <- data.frame(Column = names(missing_values), Missing_Values = missing_values)
+missing_values_df <- missing_values_df[missing_values_df$Missing_Values > 0, , drop = FALSE]
+
+# Print the result
+print(missing_values_df)
+
