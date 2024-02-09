@@ -102,3 +102,6 @@ anova_result <- aov(Fare ~ Pclass, data = TitanicData)
 
 # Display ANOVA summary
 summary(anova_result)
+
+#Basic Visualizations
+#Univariate Plots
