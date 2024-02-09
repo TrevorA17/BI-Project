@@ -113,3 +113,9 @@ ggplot(TitanicData, aes(x = Age)) +
   geom_histogram(binwidth = 5, fill = "skyblue", color = "black", alpha = 0.7) +
   labs(title = "Histogram of Age", x = "Age", y = "Frequency") +
   theme_minimal()
+
+# Univariate Bar Plot for Categorical Variable (e.g., Pclass)
+ggplot(TitanicData, aes(x = factor(Pclass))) +
+  geom_bar(fill = "lightcoral", color = "black", alpha = 0.7) +
+  labs(title = "Bar Plot of Passenger Class", x = "Passenger Class", y = "Count") +
+  theme_minimal()
