@@ -70,3 +70,23 @@ cat("Measures of Central Tendency for Fare:\n")
 cat(paste0("Mean: ", round(mean_Fare, 2)), "\n")
 cat(paste0("Median: ", median_Fare), "\n")
 cat(paste0("Mode: ", mode_Fare), "\n\n")
+
+# Calculate range, variance, and standard deviation for Age
+range_Age <- range(TitanicData$Age, na.rm = TRUE)
+variance_Age <- var(TitanicData$Age, na.rm = TRUE)
+sd_Age <- sd(TitanicData$Age, na.rm = TRUE)
+
+cat("Measures of Distribution for Age:\n")
+cat(paste0("Range: ", paste(range_Age, collapse = " - ")), "\n")
+cat(paste0("Variance: ", round(variance_Age, 2)), "\n")
+cat(paste0("Standard Deviation: ", round(sd_Age, 2)), "\n\n")
+
+# Calculate range, variance, and standard deviation for Fare
+range_Fare <- range(TitanicData$Fare, na.rm = TRUE)
+variance_Fare <- var(TitanicData$Fare, na.rm = TRUE)
+sd_Fare <- sd(TitanicData$Fare, na.rm = TRUE)
+
+cat("Measures of Distribution for Fare:\n")
+cat(paste0("Range: ", paste(range_Fare, collapse = " - ")), "\n")
+cat(paste0("Variance: ", round(variance_Fare, 2)), "\n")
+cat(paste0("Standard Deviation: ", round(sd_Fare, 2)), "\n\n")
