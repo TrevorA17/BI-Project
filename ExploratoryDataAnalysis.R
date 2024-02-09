@@ -146,3 +146,10 @@ ggplot(TitanicData, aes(x = factor(Pclass), y = Age, fill = factor(Pclass))) +
   labs(title = "Box Plot of Age by Passenger Class",
        x = "Passenger Class", y = "Age", fill = "Passenger Class") +
   theme_minimal()
+
+# Multivariate Bar Plot for Categorical Variables (e.g., Pclass and Sex)
+ggplot(TitanicData, aes(x = factor(Pclass), fill = factor(Sex))) +
+  geom_bar(position = "dodge", alpha = 0.7) +
+  labs(title = "Bar Plot of Passenger Class by Gender",
+       x = "Passenger Class", fill = "Gender") +
+  theme_minimal()
