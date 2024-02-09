@@ -70,3 +70,6 @@ View(TitanicData)
 TitanicData$ScaledAge <- scale(TitanicData$Age)
 TitanicData$ScaledFare <- scale(TitanicData$Fare)
 
+# Creating FamilySize variable
+TitanicData$FamilySize <- TitanicData$SibSp + TitanicData$Parch + 1
+
