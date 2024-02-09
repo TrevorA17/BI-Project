@@ -64,3 +64,9 @@ if (missing_values_after_imputation) {
 TitanicData <- imputed_data
 
 View(TitanicData)
+
+#Feature Scaling
+# Scaling numeric variables
+TitanicData$ScaledAge <- scale(TitanicData$Age)
+TitanicData$ScaledFare <- scale(TitanicData$Fare)
+
