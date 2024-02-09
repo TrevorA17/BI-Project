@@ -23,3 +23,14 @@ TitanicData$Sex <- factor(TitanicData$Sex, levels = sex_levels)
 
 # Display the dataset
 View(TitanicData)
+
+
+# Install and load the required packages
+install.packages("caret")
+install.packages("e1071")
+install.packages("pROC")
+
+library(caret)
+library(e1071)
+library(pROC)
+
