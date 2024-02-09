@@ -119,3 +119,9 @@ ggplot(TitanicData, aes(x = factor(Pclass))) +
   geom_bar(fill = "lightcoral", color = "black", alpha = 0.7) +
   labs(title = "Bar Plot of Passenger Class", x = "Passenger Class", y = "Count") +
   theme_minimal()
+
+# Univariate Box Plot for Numerical Variable (e.g., Fare)
+ggplot(TitanicData, aes(x = factor(Pclass), y = Fare)) +
+  geom_boxplot(fill = "lightgreen", color = "black", alpha = 0.7) +
+  labs(title = "Box Plot of Fare by Passenger Class", x = "Passenger Class", y = "Fare") +
+  theme_minimal()
