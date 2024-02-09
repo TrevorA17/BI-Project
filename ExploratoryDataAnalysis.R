@@ -132,4 +132,10 @@ ggplot(TitanicData, aes(x = factor(Sex))) +
   labs(title = "Bar Plot of Gender", x = "Gender", y = "Count") +
   theme_minimal()
 
-
+#Multivariate plots
+# Multivariate Scatter Plot for Numerical Variables (e.g., Age and Fare)
+ggplot(TitanicData, aes(x = Age, y = Fare, color = factor(Pclass))) +
+  geom_point(alpha = 0.7) +
+  labs(title = "Scatter Plot of Age and Fare by Passenger Class",
+       x = "Age", y = "Fare", color = "Passenger Class") +
+  theme_minimal()
