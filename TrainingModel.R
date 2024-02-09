@@ -43,3 +43,7 @@ test_data <- TitanicData[-split_index, ]
 # Check the dimensions of the training and testing sets
 cat("Training set size:", nrow(train_data), "\n")
 cat("Testing set size:", nrow(test_data), "\n")
+
+# Install and load the required packages
+install.packages("boot")
+library(boot)
