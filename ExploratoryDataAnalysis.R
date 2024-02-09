@@ -153,3 +153,5 @@ ggplot(TitanicData, aes(x = factor(Pclass), fill = factor(Sex))) +
   labs(title = "Bar Plot of Passenger Class by Gender",
        x = "Passenger Class", fill = "Gender") +
   theme_minimal()
+
+
