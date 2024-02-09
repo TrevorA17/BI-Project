@@ -53,3 +53,6 @@ library(boot)
 compute_statistic <- function(data) {
   mean(data$Survived == 1)
 }
+
+# Set the seed for reproducibility
+set.seed(123)
