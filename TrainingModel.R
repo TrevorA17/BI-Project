@@ -56,3 +56,11 @@ compute_statistic <- function(data) {
 
 # Set the seed for reproducibility
 set.seed(123)
+
+# Perform bootstrapping with 1000 replicates
+bootstrap_results <- boot(data = TitanicData, statistic = compute_statistic, R = 1000)
+# Display the bootstrap results
+print(bootstrap_results)
+
+# Plot the bootstrap distribution (histogram)
+hist(bootstrap_results$t, main = "Bootstrap Distribution of Survival Proportion", xlab = "Proportion Survived")
