@@ -105,3 +105,11 @@ summary(anova_result)
 
 #Basic Visualizations
 #Univariate Plots
+
+library(ggplot2)
+
+# Univariate Histogram for Numerical Variable (e.g., Age)
+ggplot(TitanicData, aes(x = Age)) +
+  geom_histogram(binwidth = 5, fill = "skyblue", color = "black", alpha = 0.7) +
+  labs(title = "Histogram of Age", x = "Age", y = "Frequency") +
+  theme_minimal()
