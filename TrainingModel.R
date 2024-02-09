@@ -48,10 +48,10 @@ cat("Testing set size:", nrow(test_data), "\n")
 install.packages("boot")
 library(boot)
 
-# Create a function to compute the statistic of interest (e.g., mean, proportion, etc.)
 # In this example, we'll use the proportion of passengers who survived
-compute_statistic <- function(data) {
-  mean(data$Survived == 1)
+compute_statistic <- function(data, indices) {
+  subset_data <- data[indices, ]
+  mean(subset_data$Survived == 1)
 }
 
 # Set the seed for reproducibility
@@ -59,6 +59,7 @@ set.seed(123)
 
 # Perform bootstrapping with 1000 replicates
 bootstrap_results <- boot(data = TitanicData, statistic = compute_statistic, R = 1000)
+
 # Display the bootstrap results
 print(bootstrap_results)
 
