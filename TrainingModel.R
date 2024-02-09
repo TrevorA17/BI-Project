@@ -47,3 +47,9 @@ cat("Testing set size:", nrow(test_data), "\n")
 # Install and load the required packages
 install.packages("boot")
 library(boot)
+
+# Create a function to compute the statistic of interest (e.g., mean, proportion, etc.)
+# In this example, we'll use the proportion of passengers who survived
+compute_statistic <- function(data) {
+  mean(data$Survived == 1)
+}
