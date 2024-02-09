@@ -139,3 +139,10 @@ ggplot(TitanicData, aes(x = Age, y = Fare, color = factor(Pclass))) +
   labs(title = "Scatter Plot of Age and Fare by Passenger Class",
        x = "Age", y = "Fare", color = "Passenger Class") +
   theme_minimal()
+
+# Multivariate Box Plot for Numerical and Categorical Variables (e.g., Age and Pclass)
+ggplot(TitanicData, aes(x = factor(Pclass), y = Age, fill = factor(Pclass))) +
+  geom_boxplot(alpha = 0.7) +
+  labs(title = "Box Plot of Age by Passenger Class",
+       x = "Passenger Class", y = "Age", fill = "Passenger Class") +
+  theme_minimal()
