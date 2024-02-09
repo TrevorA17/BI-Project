@@ -50,3 +50,23 @@ cat("Frequency and Percentage of Embarked:\n")
 cat(table_Embarked, "\n")
 cat(paste0("Percentage:\n", round(percentage_Embarked, 2)), "\n")
 cat(paste0("Class Labels:\n", class_labels_Embarked, "\n\n"))
+
+# Calculate mean, median, and mode for Age
+mean_Age <- mean(TitanicData$Age, na.rm = TRUE)
+median_Age <- median(TitanicData$Age, na.rm = TRUE)
+mode_Age <- as.numeric(names(table(TitanicData$Age))[which.max(table(TitanicData$Age))])
+
+cat("Measures of Central Tendency for Age:\n")
+cat(paste0("Mean: ", round(mean_Age, 2)), "\n")
+cat(paste0("Median: ", median_Age), "\n")
+cat(paste0("Mode: ", mode_Age), "\n\n")
+
+# Calculate mean, median, and mode for Fare
+mean_Fare <- mean(TitanicData$Fare, na.rm = TRUE)
+median_Fare <- median(TitanicData$Fare, na.rm = TRUE)
+mode_Fare <- as.numeric(names(table(TitanicData$Fare))[which.max(table(TitanicData$Fare))])
+
+cat("Measures of Central Tendency for Fare:\n")
+cat(paste0("Mean: ", round(mean_Fare, 2)), "\n")
+cat(paste0("Median: ", median_Fare), "\n")
+cat(paste0("Mode: ", mode_Fare), "\n\n")
