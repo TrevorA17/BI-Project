@@ -96,3 +96,9 @@ correlation_Age_Fare <- cor(TitanicData$Age, TitanicData$Fare, use = "complete.o
 
 cat("Measures of Relationship (Correlation) between Age and Fare:\n")
 cat(paste0("Correlation Coefficient: ", round(correlation_Age_Fare, 2)), "\n\n")
+
+# Perform ANOVA for Fare among different Passenger Classes
+anova_result <- aov(Fare ~ Pclass, data = TitanicData)
+
+# Display ANOVA summary
+summary(anova_result)
