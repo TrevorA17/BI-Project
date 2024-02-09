@@ -131,3 +131,5 @@ ggplot(TitanicData, aes(x = factor(Sex))) +
   geom_bar(fill = "lightcoral", color = "black", alpha = 0.7) +
   labs(title = "Bar Plot of Gender", x = "Gender", y = "Count") +
   theme_minimal()
+
+
