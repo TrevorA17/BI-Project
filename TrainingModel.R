@@ -84,9 +84,9 @@ print(model)
 
 # Load required libraries
 library(caret)
-library(glmnet)  # You may need to install this package if not already installed
-library(randomForest)  # You may need to install this package if not already installed
-library(xgboost)  # You may need to install this package if not already installed
+library(glmnet)  
+library(randomForest)  
+library(xgboost)  
 
 # Remove rows with missing values in the 'Survived' column
 TitanicData <- na.omit(TitanicData)
@@ -103,3 +103,6 @@ models <- list(
 
 # Compare models using resamples
 resamples <- resamples(models)
+
+# Summarize results
+summary(resamples)
