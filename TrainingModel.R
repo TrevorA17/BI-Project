@@ -76,3 +76,6 @@ set.seed(123)
 
 # Define the number of folds for cross-validation (e.g., 10-fold)
 num_folds <- 10
+
+# Create a training control object for k-fold cross-validation
+train_control <- trainControl(method = "cv", number = num_folds)
