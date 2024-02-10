@@ -39,11 +39,3 @@ predict_titanic_survival <- function(Pclass, Sex, Age, SibSp, Parch, Fare, Embar
   return(prediction)
 }
 
-# Create the Plumber API
-plumber_api <- plumber::plumber()
-
-# Register the endpoint
-plumber_api$register("/titanic_survival", "GET", predict_titanic_survival)
-
-# Run the Plumber API
-plumber_api$run(port = 8000)
