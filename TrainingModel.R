@@ -73,3 +73,6 @@ library(caret)
 
 # Set the seed for reproducibility
 set.seed(123)
+
+# Define the number of folds for cross-validation (e.g., 10-fold)
+num_folds <- 10
