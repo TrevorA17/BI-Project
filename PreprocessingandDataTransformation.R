@@ -69,11 +69,8 @@ TitanicData <- imputed_data
 
 View(TitanicData)
 
-#Feature Scaling
-# Scaling numeric variables
-TitanicData$ScaledAge <- scale(TitanicData$Age)
-TitanicData$ScaledFare <- scale(TitanicData$Fare)
+# Assuming your dataset is named TitanicData
+TitanicData <- subset(TitanicData, select = -PassengerId)
 
-# Creating FamilySize variable
-TitanicData$FamilySize <- TitanicData$SibSp + TitanicData$Parch + 1
+View(TitanicData)
 

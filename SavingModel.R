@@ -13,9 +13,16 @@ saveRDS(rf_model, "./models/saved_rf_model.rds")
 # Load the saved Random Forest model
 loaded_rf_model <- readRDS("./models/saved_rf_model.rds")
 
-# New data for prediction
+# Arrange variables in the desired order
 new_data <- data.frame(
-  # Include your variables here based on the model features
+  Pclass = 3,                   # Passenger class (1st, 2nd, or 3rd)
+  Age = 25,                     # Age of the passenger
+  SibSp = 1,                    # Number of siblings/spouses aboard
+  Parch = 0,                    # Number of parents/children aboard
+  Fare = 20,                    # Passenger fare
+  Survived = 1,                 # Survival indicator
+  Sex = "female",               # Sex of the passenger
+  Embarked = "S"                # Port of embarkation (C = Cherbourg, Q = Queenstown, S = Southampton)
 )
 
 # Use the loaded Random Forest model to make predictions
