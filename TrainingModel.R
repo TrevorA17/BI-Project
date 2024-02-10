@@ -78,3 +78,6 @@ train_control <- trainControl(method = "cv", number = 5)
 
 # Train a logistic regression model
 model <- train(Survived ~ ., data = TitanicData, method = "glm", trControl = train_control, family = "binomial")
+
+# Print the model summary
+print(model)
