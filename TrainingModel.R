@@ -67,3 +67,5 @@ print(bootstrap_results)
 hist(bootstrap_results$t, main = "Bootstrap Distribution of Survival Proportion", xlab = "Proportion Survived")
 
 #Cross-validation
+# Log transformation of a numeric column (e.g., Fare)
+TitanicData$LogFare <- log1p(TitanicData$Fare)
