@@ -65,3 +65,5 @@ print(bootstrap_results)
 
 # Plot the bootstrap distribution (histogram)
 hist(bootstrap_results$t, main = "Bootstrap Distribution of Survival Proportion", xlab = "Proportion Survived")
+
+#Cross-validation
