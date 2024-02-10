@@ -135,7 +135,7 @@ print(rf_conf_matrix)
 # Load required libraries
 library(caret)
 
-# Assuming 'TitanicData' is your dataset and 'train_control' is your control object
+# 'TitanicData' is your dataset and 'train_control' is your control object
 
 # Train Support Vector Machine (SVM) model
 svm_model <- train(Survived ~ ., data = TitanicData, method = "svmRadial", trControl = train_control)
