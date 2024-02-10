@@ -67,13 +67,6 @@ print(bootstrap_results)
 hist(bootstrap_results$t, main = "Bootstrap Distribution of Survival Proportion", xlab = "Proportion Survived")
 
 #Cross-validation
-# Log transformation of a numeric column (e.g., Fare)
-TitanicData$LogFare <- log1p(TitanicData$Fare)
-
-# Scaling numeric columns (e.g., Age)
-TitanicData$ScaledAge <- scale(TitanicData$Age)
-
-# Creating dummy variables for a categorical column (e.g., Embarked)
-embarked_dummies <- as.data.frame(model.matrix(~Embarked - 1, data = TitanicData))
-colnames(embarked_dummies) <- c("Embarked_C", "Embarked_Q", "Embarked_S")
-TitanicData <- cbind(TitanicData, embarked_dummies)
+# Install and load the required packages
+install.packages("caret")
+library(caret)
