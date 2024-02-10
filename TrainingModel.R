@@ -72,3 +72,6 @@ library(glmnet)  # You may need to install this package if not already installed
 
 # Remove rows with missing values in the 'Survived' column
 TitanicData <- na.omit(TitanicData)
+
+# Set up the training control
+train_control <- trainControl(method = "cv", number = 5)
