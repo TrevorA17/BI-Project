@@ -66,3 +66,9 @@ print(bootstrap_results)
 # Plot the bootstrap distribution (histogram)
 hist(bootstrap_results$t, main = "Bootstrap Distribution of Survival Proportion", xlab = "Proportion Survived")
 
+# Load required libraries
+library(caret)
+library(glmnet)  # You may need to install this package if not already installed
+
+# Remove rows with missing values in the 'Survived' column
+TitanicData <- na.omit(TitanicData)
