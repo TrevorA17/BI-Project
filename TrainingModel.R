@@ -69,3 +69,6 @@ hist(bootstrap_results$t, main = "Bootstrap Distribution of Survival Proportion"
 #Cross-validation
 # Log transformation of a numeric column (e.g., Fare)
 TitanicData$LogFare <- log1p(TitanicData$Fare)
+
+# Scaling numeric columns (e.g., Age)
+TitanicData$ScaledAge <- scale(TitanicData$Age)
