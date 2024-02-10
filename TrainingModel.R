@@ -102,25 +102,26 @@ rf_model <- train(
   trControl = train_control,
   ntree = 100  # Adjust as needed
 )
-# Combine models using resamples
-resamples <- resamples(list(glm_model = glm_model, rf_model = rf_model))
 
-# Assess performance for each model
-glm_perf <- performance(glm_model, metrics = c("Accuracy", "Kappa"))
-rf_perf <- performance(rf_model, metrics = c("Accuracy", "Kappa"))
+# Make predictions on the test set
+glm_predictions <- predict(glm_model, newdata = test_data)
+rf_predictions <- predict(rf_model, newdata = test_data)
 
+# Evaluate performance for logistic regression model
+glm_conf_matrix <- confusionMatrix(glm_predictions, test_data$Survived)
+glm_accuracy <- glm_conf_matrix$overall["Accuracy"]
 
-# Display performance metrics
-print("GLM Model Performance:")
-print(summary(glm_perf))
+# Evaluate performance for random forest model
+rf_conf_matrix <- confusionMatrix(rf_predictions, test_data$Survived)
+rf_accuracy <- rf_conf_matrix$overall["Accuracy"]
 
-print("Random Forest Model Performance:")
-print(summary(rf_perf))
+# Display results
+cat("Logistic Regression Model:\n")
+cat(paste("Accuracy: ", glm_accuracy, "\n"))
+cat("Confusion Matrix:\n")
+print(glm_conf_matrix)
 
-
-
-# Combine models using resamples
-resamples <- resamples(list(glm_model = glm_model, rf_model = rf_model))
-
-# Display summary of resamples
-summary(resamples)
+cat("\nRandom Forest Model:\n")
+cat(paste("Accuracy: ", rf_accuracy, "\n"))
+cat("Confusion Matrix:\n")
+print(rf_conf_matrix)
