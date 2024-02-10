@@ -82,5 +82,8 @@ model <- train(Survived ~ ., data = TitanicData, method = "glm", trControl = tra
 # Print the model summary
 print(model)
 
-# Make predictions on the training data
-predictions <- predict(model, newdata = TitanicData)
+# Load required libraries
+library(caret)
+library(glmnet)  # You may need to install this package if not already installed
+library(randomForest)  # You may need to install this package if not already installed
+library(xgboost)  # You may need to install this package if not already installed
