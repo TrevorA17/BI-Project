@@ -131,6 +131,7 @@ cat(paste("Accuracy: ", rf_accuracy, "\n"))
 cat("Confusion Matrix:\n")
 print(rf_conf_matrix)
 
+
 # Load required libraries
 library(caret)
 
@@ -171,3 +172,6 @@ resamples <- resamples(models)
 
 # Print summary of performance metrics
 summary(resamples)
+
+
+
