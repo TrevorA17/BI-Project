@@ -81,3 +81,6 @@ model <- train(Survived ~ ., data = TitanicData, method = "glm", trControl = tra
 
 # Print the model summary
 print(model)
+
+# Make predictions on the training data
+predictions <- predict(model, newdata = TitanicData)
