@@ -70,3 +70,6 @@ hist(bootstrap_results$t, main = "Bootstrap Distribution of Survival Proportion"
 # Install and load the required packages
 install.packages("caret")
 library(caret)
+
+# Set the seed for reproducibility
+set.seed(123)
