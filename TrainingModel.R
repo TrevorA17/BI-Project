@@ -91,13 +91,13 @@ library(xgboost)
 # Remove rows with missing values in the 'Survived' column
 TitanicData <- na.omit(TitanicData)
 
-# Train a single model (e.g., glm_model)
+# Train a generalized linear model
 glm_model <- train(Survived ~ ., data = TitanicData, method = "glm", trControl = train_control, family = "binomial")
 
-# Train another model (e.g., rf_model)
+# Train Random forest Model
 rf_model <- train(Survived ~ ., data = TitanicData, method = "rf", trControl = train_control)
 
-# Train another model (e.g., xgb_model)
+# Train a XGBoost Tree Model
 xgb_model <- train(Survived ~ ., data = TitanicData, method = "xgbTree", trControl = train_control)
 
 # Combine models using resamples
