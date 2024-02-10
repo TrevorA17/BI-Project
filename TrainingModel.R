@@ -100,3 +100,6 @@ models <- list(
   rf_model = train(Survived ~ ., data = TitanicData, method = "rf", trControl = train_control),
   xgb_model = train(Survived ~ ., data = TitanicData, method = "xgbTree", trControl = train_control)
 )
+
+# Compare models using resamples
+resamples <- resamples(models)
