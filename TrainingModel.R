@@ -91,3 +91,35 @@ library(xgboost)
 # Remove rows with missing values in the 'Survived' column
 TitanicData <- na.omit(TitanicData)
 
+# Train a single model (e.g., glm_model)
+glm_model <- train(Survived ~ ., data = TitanicData, method = "glm", trControl = train_control, family = "binomial")
+
+# Train another model (e.g., rf_model)
+rf_model <- train(Survived ~ ., data = TitanicData, method = "rf", trControl = train_control)
+
+# Train another model (e.g., xgb_model)
+xgb_model <- train(Survived ~ ., data = TitanicData, method = "xgbTree", trControl = train_control)
+
+# Combine models using resamples
+resamples <- resamples(list(glm_model = glm_model, rf_model = rf_model, xgb_model = xgb_model))
+
+# Assess performance for each model
+glm_perf <- performance(glm_model, metrics = c("Accuracy", "Kappa"))
+rf_perf <- performance(rf_model, metrics = c("Accuracy", "Kappa"))
+xgb_perf <- performance(xgb_model, metrics = c("Accuracy", "Kappa"))
+
+# Display performance metrics
+print("GLM Model Performance:")
+print(summary(glm_perf))
+
+print("Random Forest Model Performance:")
+print(summary(rf_perf))
+
+print("XGBoost Model Performance:")
+print(summary(xgb_perf))
+
+# Combine models using resamples
+resamples <- resamples(list(glm_model = glm_model, rf_model = rf_model, xgb_model = xgb_model))
+
+# Display summary of resamples
+summary(resamples)
