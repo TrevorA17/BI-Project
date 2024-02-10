@@ -87,3 +87,6 @@ library(caret)
 library(glmnet)  # You may need to install this package if not already installed
 library(randomForest)  # You may need to install this package if not already installed
 library(xgboost)  # You may need to install this package if not already installed
+
+# Remove rows with missing values in the 'Survived' column
+TitanicData <- na.omit(TitanicData)
