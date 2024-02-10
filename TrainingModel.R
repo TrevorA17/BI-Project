@@ -86,7 +86,7 @@ print(model)
 library(caret)
 library(glmnet)  
 library(randomForest)  
-library(xgboost)  
+
 
 # Remove rows with missing values in the 'Survived' column
 TitanicData <- na.omit(TitanicData)
@@ -94,21 +94,14 @@ TitanicData <- na.omit(TitanicData)
 # Train a generalized linear model
 glm_model <- train(Survived ~ ., data = TitanicData, method = "glm", trControl = train_control, family = "binomial")
 
-# Set the number of cores
-num_cores <- parallel::detectCores()
-
-# Train Random Forest Model with Parallel Processing
+# Train Random Forest Model
 rf_model <- train(
-  Survived ~ ., 
-  data = TitanicData, 
-  method = "rf", 
-  trControl = train_control, 
-  ntree = 500,  # Adjust the number of trees as needed
-  nodesize = 5,  # Example value, adjust as needed
-  allowParallel = TRUE, 
-  number = num_cores
+  Survived ~ .,
+  data = TitanicData,
+  method = "rf",
+  trControl = train_control,
+  ntree = 100  # Adjust as needed
 )
-
 # Combine models using resamples
 resamples <- resamples(list(glm_model = glm_model, rf_model = rf_model))
 
