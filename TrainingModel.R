@@ -66,16 +66,3 @@ print(bootstrap_results)
 # Plot the bootstrap distribution (histogram)
 hist(bootstrap_results$t, main = "Bootstrap Distribution of Survival Proportion", xlab = "Proportion Survived")
 
-#Cross-validation
-# Install and load the required packages
-install.packages("caret")
-library(caret)
-
-# Set the seed for reproducibility
-set.seed(123)
-
-# Define the number of folds for cross-validation (e.g., 10-fold)
-num_folds <- 10
-
-# Create a training control object for k-fold cross-validation
-train_control <- trainControl(method = "cv", number = num_folds)
