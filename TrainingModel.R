@@ -90,3 +90,13 @@ library(xgboost)  # You may need to install this package if not already installe
 
 # Remove rows with missing values in the 'Survived' column
 TitanicData <- na.omit(TitanicData)
+
+# Set up the training control
+train_control <- trainControl(method = "cv", number = 5)
+
+# Define models
+models <- list(
+  glm_model = train(Survived ~ ., data = TitanicData, method = "glm", trControl = train_control, family = "binomial"),
+  rf_model = train(Survived ~ ., data = TitanicData, method = "rf", trControl = train_control),
+  xgb_model = train(Survived ~ ., data = TitanicData, method = "xgbTree", trControl = train_control)
+)
