@@ -1,6 +1,7 @@
 #Load dataset
 TitanicData <-read.csv("data/titanic.csv", colClasses = c(
   PassengerId = "numeric",
+  Survived = "factor",
   Pclass = "numeric",
   Name = "character",
   Sex = "factor",
@@ -16,10 +17,13 @@ TitanicData <-read.csv("data/titanic.csv", colClasses = c(
 # Define levels for categorical columns
 embarked_levels <- c("C", "Q", "S")
 sex_levels <- c("female", "male")
+survived_levels <- c("0", "1")
 
 # Update factor columns with levels
 TitanicData$Embarked <- factor(TitanicData$Embarked, levels = embarked_levels)
 TitanicData$Sex <- factor(TitanicData$Sex, levels = sex_levels)
+TitanicData$Survived <- factor(TitanicData$Survived, levels = survived_levels)
+
 
 # Display the dataset
 View(TitanicData)

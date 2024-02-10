@@ -1,6 +1,7 @@
 #Load dataset
 TitanicData <-read.csv("data/titanic.csv", colClasses = c(
   PassengerId = "numeric",
+  Survived = "factor",
   Pclass = "numeric",
   Name = "character",
   Sex = "factor",
@@ -16,10 +17,12 @@ TitanicData <-read.csv("data/titanic.csv", colClasses = c(
 # Define levels for categorical columns
 embarked_levels <- c("C", "Q", "S")
 sex_levels <- c("female", "male")
+survived_levels <- c("0", "1")
 
 # Update factor columns with levels
 TitanicData$Embarked <- factor(TitanicData$Embarked, levels = embarked_levels)
 TitanicData$Sex <- factor(TitanicData$Sex, levels = sex_levels)
+TitanicData$Survived <- factor(TitanicData$Survived, levels = survived_levels)
 
 # Display the dataset
 View(TitanicData)
@@ -107,6 +110,8 @@ rf_model <- train(
 glm_predictions <- predict(glm_model, newdata = test_data)
 rf_predictions <- predict(rf_model, newdata = test_data)
 
+
+
 # Evaluate performance for logistic regression model
 glm_conf_matrix <- confusionMatrix(glm_predictions, test_data$Survived)
 glm_accuracy <- glm_conf_matrix$overall["Accuracy"]
@@ -125,3 +130,44 @@ cat("\nRandom Forest Model:\n")
 cat(paste("Accuracy: ", rf_accuracy, "\n"))
 cat("Confusion Matrix:\n")
 print(rf_conf_matrix)
+
+# Load required libraries
+library(caret)
+
+# Assuming 'TitanicData' is your dataset and 'train_control' is your control object
+
+# Train Support Vector Machine (SVM) model
+svm_model <- train(Survived ~ ., data = TitanicData, method = "svmRadial", trControl = train_control)
+
+# Train k-Nearest Neighbors (kNN) model
+knn_model <- train(Survived ~ ., data = TitanicData, method = "knn", trControl = train_control)
+
+# Train Gradient Boosting Machine (GBM) model
+gbm_model <- train(Survived ~ ., data = TitanicData, method = "gbm", trControl = train_control)
+
+# Train Neural Network model
+nnet_model <- train(Survived ~ ., data = TitanicData, method = "nnet", trControl = train_control)
+
+# Train Decision Tree model
+tree_model <- train(Survived ~ ., data = TitanicData, method = "rpart", trControl = train_control)
+
+# Train Naive Bayes model
+nb_model <- train(Survived ~ ., data = TitanicData, method = "nb", trControl = train_control)
+
+# Create a list of models for comparison
+models <- list(
+  glm_model = glm_model,
+  rf_model = rf_model,
+  svm_model = svm_model,
+  knn_model = knn_model,
+  gbm_model = gbm_model,
+  nnet_model = nnet_model,
+  tree_model = tree_model,
+  nb_model = nb_model
+)
+
+# Compare models using resamples
+resamples <- resamples(models)
+
+# Print summary of performance metrics
+summary(resamples)
