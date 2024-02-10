@@ -94,9 +94,20 @@ TitanicData <- na.omit(TitanicData)
 # Train a generalized linear model
 glm_model <- train(Survived ~ ., data = TitanicData, method = "glm", trControl = train_control, family = "binomial")
 
-# Train Random forest Model
-rf_model <- train(Survived ~ ., data = TitanicData, method = "rf", trControl = train_control)
+# Set the number of cores
+num_cores <- parallel::detectCores()
 
+# Train Random Forest Model with Parallel Processing
+rf_model <- train(
+  Survived ~ ., 
+  data = TitanicData, 
+  method = "rf", 
+  trControl = train_control, 
+  ntree = 500,  # Adjust the number of trees as needed
+  nodesize = 5,  # Example value, adjust as needed
+  allowParallel = TRUE, 
+  number = num_cores
+)
 
 # Combine models using resamples
 resamples <- resamples(list(glm_model = glm_model, rf_model = rf_model))
