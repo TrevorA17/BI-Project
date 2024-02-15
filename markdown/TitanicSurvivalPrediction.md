@@ -538,3 +538,82 @@ TitanicData <- subset(TitanicData, select = -PassengerId)
 
 View(TitanicData)
 ```
+
+``` r
+library(caret)
+```
+
+    ## Loading required package: lattice
+
+``` r
+library(e1071)
+library(pROC)
+```
+
+    ## Type 'citation("pROC")' for a citation.
+
+    ## 
+    ## Attaching package: 'pROC'
+
+    ## The following objects are masked from 'package:stats':
+    ## 
+    ##     cov, smooth, var
+
+``` r
+# Split the data into training and testing sets
+set.seed(123)  # for reproducibility
+split_index <- createDataPartition(TitanicData$Survived, p = 0.8, list = FALSE)
+train_data <- TitanicData[split_index, ]
+test_data <- TitanicData[-split_index, ]
+
+# Check the dimensions of the training and testing sets
+cat("Training set size:", nrow(train_data), "\n")
+```
+
+    ## Training set size: 713
+
+``` r
+cat("Testing set size:", nrow(test_data), "\n")
+```
+
+    ## Testing set size: 178
+
+``` r
+library(boot)
+```
+
+    ## 
+    ## Attaching package: 'boot'
+
+    ## The following object is masked from 'package:lattice':
+    ## 
+    ##     melanoma
+
+``` r
+# In this example, we'll use the proportion of passengers who survived
+compute_statistic <- function(data, indices) {
+  subset_data <- data[indices, ]
+  mean(subset_data$Survived == 1)
+}
+
+# Set the seed for reproducibility
+set.seed(123)
+
+# Perform bootstrapping with 1000 replicates
+bootstrap_results <- boot(data = TitanicData, statistic = compute_statistic, R = 1000)
+
+# Display the bootstrap results
+print(bootstrap_results)
+```
+
+    ## 
+    ## ORDINARY NONPARAMETRIC BOOTSTRAP
+    ## 
+    ## 
+    ## Call:
+    ## boot(data = TitanicData, statistic = compute_statistic, R = 1000)
+    ## 
+    ## 
+    ## Bootstrap Statistics :
+    ##      original       bias    std. error
+    ## t1* 0.3838384 0.0009393939  0.01639145
