@@ -315,3 +315,95 @@ cat(paste0("Correlation Coefficient: ", round(correlation_Age_Fare, 2)), "\n\n")
 ```
 
     ## Correlation Coefficient: 0.1
+
+``` r
+# Perform ANOVA for Fare among different Passenger Classes
+anova_result <- aov(Fare ~ Pclass, data = TitanicData)
+
+# Display ANOVA summary
+summary(anova_result)
+```
+
+    ##              Df  Sum Sq Mean Sq F value Pr(>F)    
+    ## Pclass        1  663625  663625   384.5 <2e-16 ***
+    ## Residuals   889 1534174    1726                   
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+``` r
+#Univariate Plots
+
+library(ggplot2)
+
+# Univariate Histogram for Numerical Variable (e.g., Age)
+ggplot(TitanicData, aes(x = Age)) +
+  geom_histogram(binwidth = 5, fill = "skyblue", color = "black", alpha = 0.7) +
+  labs(title = "Histogram of Age", x = "Age", y = "Frequency") +
+  theme_minimal()
+```
+
+![](TitanicSurvivalPrediction_files/figure-gfm/Basic%20Visualization-1.png)<!-- -->
+
+``` r
+# Univariate Bar Plot for Categorical Variable (e.g., Pclass)
+ggplot(TitanicData, aes(x = factor(Pclass))) +
+  geom_bar(fill = "lightcoral", color = "black", alpha = 0.7) +
+  labs(title = "Bar Plot of Passenger Class", x = "Passenger Class", y = "Count") +
+  theme_minimal()
+```
+
+![](TitanicSurvivalPrediction_files/figure-gfm/Basic%20Visualization-2.png)<!-- -->
+
+``` r
+# Univariate Box Plot for Numerical Variable (e.g., Fare)
+ggplot(TitanicData, aes(x = factor(Pclass), y = Fare)) +
+  geom_boxplot(fill = "lightgreen", color = "black", alpha = 0.7) +
+  labs(title = "Box Plot of Fare by Passenger Class", x = "Passenger Class", y = "Fare") +
+  theme_minimal()
+```
+
+![](TitanicSurvivalPrediction_files/figure-gfm/Basic%20Visualization-3.png)<!-- -->
+
+``` r
+# Univariate Bar Plot for Categorical Variable (e.g., Sex)
+ggplot(TitanicData, aes(x = factor(Sex))) +
+  geom_bar(fill = "lightcoral", color = "black", alpha = 0.7) +
+  labs(title = "Bar Plot of Gender", x = "Gender", y = "Count") +
+  theme_minimal()
+```
+
+![](TitanicSurvivalPrediction_files/figure-gfm/Basic%20Visualization-4.png)<!-- -->
+
+``` r
+#Multivariate plots
+# Multivariate Scatter Plot for Numerical Variables (e.g., Age and Fare)
+ggplot(TitanicData, aes(x = Age, y = Fare, color = factor(Pclass))) +
+  geom_point(alpha = 0.7) +
+  labs(title = "Scatter Plot of Age and Fare by Passenger Class",
+       x = "Age", y = "Fare", color = "Passenger Class") +
+  theme_minimal()
+```
+
+![](TitanicSurvivalPrediction_files/figure-gfm/Multivariate%20Plots-1.png)<!-- -->
+
+``` r
+# Multivariate Box Plot for Numerical and Categorical Variables (e.g., Age and Pclass)
+ggplot(TitanicData, aes(x = factor(Pclass), y = Age, fill = factor(Pclass))) +
+  geom_boxplot(alpha = 0.7) +
+  labs(title = "Box Plot of Age by Passenger Class",
+       x = "Passenger Class", y = "Age", fill = "Passenger Class") +
+  theme_minimal()
+```
+
+![](TitanicSurvivalPrediction_files/figure-gfm/Multivariate%20Plots-2.png)<!-- -->
+
+``` r
+# Multivariate Bar Plot for Categorical Variables (e.g., Pclass and Sex)
+ggplot(TitanicData, aes(x = factor(Pclass), fill = factor(Sex))) +
+  geom_bar(position = "dodge", alpha = 0.7) +
+  labs(title = "Bar Plot of Passenger Class by Gender",
+       x = "Passenger Class", fill = "Gender") +
+  theme_minimal()
+```
+
+![](TitanicSurvivalPrediction_files/figure-gfm/Multivariate%20Plots-3.png)<!-- -->

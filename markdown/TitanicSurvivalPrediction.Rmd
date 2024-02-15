@@ -160,3 +160,65 @@ cat("Measures of Relationship (Correlation) between Age and Fare:\n")
 cat(paste0("Correlation Coefficient: ", round(correlation_Age_Fare, 2)), "\n\n")
 ```
 
+```{r ANOVA}
+# Perform ANOVA for Fare among different Passenger Classes
+anova_result <- aov(Fare ~ Pclass, data = TitanicData)
+
+# Display ANOVA summary
+summary(anova_result)
+```
+
+```{r Basic Visualization}
+#Univariate Plots
+
+library(ggplot2)
+
+# Univariate Histogram for Numerical Variable (e.g., Age)
+ggplot(TitanicData, aes(x = Age)) +
+  geom_histogram(binwidth = 5, fill = "skyblue", color = "black", alpha = 0.7) +
+  labs(title = "Histogram of Age", x = "Age", y = "Frequency") +
+  theme_minimal()
+
+# Univariate Bar Plot for Categorical Variable (e.g., Pclass)
+ggplot(TitanicData, aes(x = factor(Pclass))) +
+  geom_bar(fill = "lightcoral", color = "black", alpha = 0.7) +
+  labs(title = "Bar Plot of Passenger Class", x = "Passenger Class", y = "Count") +
+  theme_minimal()
+
+# Univariate Box Plot for Numerical Variable (e.g., Fare)
+ggplot(TitanicData, aes(x = factor(Pclass), y = Fare)) +
+  geom_boxplot(fill = "lightgreen", color = "black", alpha = 0.7) +
+  labs(title = "Box Plot of Fare by Passenger Class", x = "Passenger Class", y = "Fare") +
+  theme_minimal()
+
+# Univariate Bar Plot for Categorical Variable (e.g., Sex)
+ggplot(TitanicData, aes(x = factor(Sex))) +
+  geom_bar(fill = "lightcoral", color = "black", alpha = 0.7) +
+  labs(title = "Bar Plot of Gender", x = "Gender", y = "Count") +
+  theme_minimal()
+```
+
+```{r Multivariate Plots}
+#Multivariate plots
+# Multivariate Scatter Plot for Numerical Variables (e.g., Age and Fare)
+ggplot(TitanicData, aes(x = Age, y = Fare, color = factor(Pclass))) +
+  geom_point(alpha = 0.7) +
+  labs(title = "Scatter Plot of Age and Fare by Passenger Class",
+       x = "Age", y = "Fare", color = "Passenger Class") +
+  theme_minimal()
+
+# Multivariate Box Plot for Numerical and Categorical Variables (e.g., Age and Pclass)
+ggplot(TitanicData, aes(x = factor(Pclass), y = Age, fill = factor(Pclass))) +
+  geom_boxplot(alpha = 0.7) +
+  labs(title = "Box Plot of Age by Passenger Class",
+       x = "Passenger Class", y = "Age", fill = "Passenger Class") +
+  theme_minimal()
+
+# Multivariate Bar Plot for Categorical Variables (e.g., Pclass and Sex)
+ggplot(TitanicData, aes(x = factor(Pclass), fill = factor(Sex))) +
+  geom_bar(position = "dodge", alpha = 0.7) +
+  labs(title = "Bar Plot of Passenger Class by Gender",
+       x = "Passenger Class", fill = "Gender") +
+  theme_minimal()
+```
+
