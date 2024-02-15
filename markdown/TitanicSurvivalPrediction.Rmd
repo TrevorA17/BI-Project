@@ -122,5 +122,41 @@ cat(paste0("Mode: ", mode_Age), "\n\n")
 mean_Fare <- mean(TitanicData$Fare, na.rm = TRUE)
 median_Fare <- median(TitanicData$Fare, na.rm = TRUE)
 mode_Fare <- as.numeric(names(table(TitanicData$Fare))[which.max(table(TitanicData$Fare))])
+
+cat("Measures of Central Tendency for Fare:\n")
+cat(paste0("Mean: ", round(mean_Fare, 2)), "\n")
+cat(paste0("Median: ", median_Fare), "\n")
+cat(paste0("Mode: ", mode_Fare), "\n\n")
+```
+
+```{r Measures of Distribution}
+# Calculate range, variance, and standard deviation for Age
+range_Age <- range(TitanicData$Age, na.rm = TRUE)
+variance_Age <- var(TitanicData$Age, na.rm = TRUE)
+sd_Age <- sd(TitanicData$Age, na.rm = TRUE)
+
+cat("Measures of Distribution for Age:\n")
+cat(paste0("Range: ", paste(range_Age, collapse = " - ")), "\n")
+cat(paste0("Variance: ", round(variance_Age, 2)), "\n")
+cat(paste0("Standard Deviation: ", round(sd_Age, 2)), "\n\n")
+
+# Calculate range, variance, and standard deviation for Fare
+range_Fare <- range(TitanicData$Fare, na.rm = TRUE)
+variance_Fare <- var(TitanicData$Fare, na.rm = TRUE)
+sd_Fare <- sd(TitanicData$Fare, na.rm = TRUE)
+
+cat("Measures of Distribution for Fare:\n")
+cat(paste0("Range: ", paste(range_Fare, collapse = " - ")), "\n")
+cat(paste0("Variance: ", round(variance_Fare, 2)), "\n")
+cat(paste0("Standard Deviation: ", round(sd_Fare, 2)), "\n\n")
+
+```
+
+```{r Measures of relationship}
+# Calculate correlation between Age and Fare
+correlation_Age_Fare <- cor(TitanicData$Age, TitanicData$Fare, use = "complete.obs")
+
+cat("Measures of Relationship (Correlation) between Age and Fare:\n")
+cat(paste0("Correlation Coefficient: ", round(correlation_Age_Fare, 2)), "\n\n")
 ```
 

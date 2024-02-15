@@ -219,4 +219,99 @@ cat(paste0("Mode: ", mode_Age), "\n\n")
 mean_Fare <- mean(TitanicData$Fare, na.rm = TRUE)
 median_Fare <- median(TitanicData$Fare, na.rm = TRUE)
 mode_Fare <- as.numeric(names(table(TitanicData$Fare))[which.max(table(TitanicData$Fare))])
+
+cat("Measures of Central Tendency for Fare:\n")
 ```
+
+    ## Measures of Central Tendency for Fare:
+
+``` r
+cat(paste0("Mean: ", round(mean_Fare, 2)), "\n")
+```
+
+    ## Mean: 32.2
+
+``` r
+cat(paste0("Median: ", median_Fare), "\n")
+```
+
+    ## Median: 14.4542
+
+``` r
+cat(paste0("Mode: ", mode_Fare), "\n\n")
+```
+
+    ## Mode: 8.05
+
+``` r
+# Calculate range, variance, and standard deviation for Age
+range_Age <- range(TitanicData$Age, na.rm = TRUE)
+variance_Age <- var(TitanicData$Age, na.rm = TRUE)
+sd_Age <- sd(TitanicData$Age, na.rm = TRUE)
+
+cat("Measures of Distribution for Age:\n")
+```
+
+    ## Measures of Distribution for Age:
+
+``` r
+cat(paste0("Range: ", paste(range_Age, collapse = " - ")), "\n")
+```
+
+    ## Range: 0.42 - 80
+
+``` r
+cat(paste0("Variance: ", round(variance_Age, 2)), "\n")
+```
+
+    ## Variance: 211.02
+
+``` r
+cat(paste0("Standard Deviation: ", round(sd_Age, 2)), "\n\n")
+```
+
+    ## Standard Deviation: 14.53
+
+``` r
+# Calculate range, variance, and standard deviation for Fare
+range_Fare <- range(TitanicData$Fare, na.rm = TRUE)
+variance_Fare <- var(TitanicData$Fare, na.rm = TRUE)
+sd_Fare <- sd(TitanicData$Fare, na.rm = TRUE)
+
+cat("Measures of Distribution for Fare:\n")
+```
+
+    ## Measures of Distribution for Fare:
+
+``` r
+cat(paste0("Range: ", paste(range_Fare, collapse = " - ")), "\n")
+```
+
+    ## Range: 0 - 512.3292
+
+``` r
+cat(paste0("Variance: ", round(variance_Fare, 2)), "\n")
+```
+
+    ## Variance: 2469.44
+
+``` r
+cat(paste0("Standard Deviation: ", round(sd_Fare, 2)), "\n\n")
+```
+
+    ## Standard Deviation: 49.69
+
+``` r
+# Calculate correlation between Age and Fare
+correlation_Age_Fare <- cor(TitanicData$Age, TitanicData$Fare, use = "complete.obs")
+
+cat("Measures of Relationship (Correlation) between Age and Fare:\n")
+```
+
+    ## Measures of Relationship (Correlation) between Age and Fare:
+
+``` r
+cat(paste0("Correlation Coefficient: ", round(correlation_Age_Fare, 2)), "\n\n")
+```
+
+    ## Correlation Coefficient: 0.1
