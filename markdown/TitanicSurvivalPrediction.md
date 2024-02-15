@@ -512,3 +512,29 @@ imputed_data_categorical <- complete(mice(TitanicData[, categorical_cols]))
 # Combine the imputed numeric and categorical datasets
 imputed_data <- cbind(imputed_data_numeric, imputed_data_categorical)
 ```
+
+``` r
+# Check if there are still missing values in the imputed dataset
+missing_values_after_imputation <- any(is.na(imputed_data))
+
+# Display the result
+if (missing_values_after_imputation) {
+  cat("There are still missing values after imputation.\n")
+} else {
+  cat("All missing values have been successfully imputed.\n")
+}
+```
+
+    ## All missing values have been successfully imputed.
+
+``` r
+# Replace TitanicData dataset with the imputed dataset
+TitanicData <- imputed_data
+
+View(TitanicData)
+
+# Assuming your dataset is named TitanicData
+TitanicData <- subset(TitanicData, select = -PassengerId)
+
+View(TitanicData)
+```
