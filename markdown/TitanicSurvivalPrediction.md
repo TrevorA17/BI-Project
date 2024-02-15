@@ -617,3 +617,47 @@ print(bootstrap_results)
     ## Bootstrap Statistics :
     ##      original       bias    std. error
     ## t1* 0.3838384 0.0009393939  0.01639145
+
+``` r
+# Plot the bootstrap distribution (histogram)
+hist(bootstrap_results$t, main = "Bootstrap Distribution of Survival Proportion", xlab = "Proportion Survived")
+```
+
+![](TitanicSurvivalPrediction_files/figure-gfm/Boostrapping-1.png)<!-- -->
+
+``` r
+# Load required libraries
+library(caret)
+library(glmnet)  # You may need to install this package if not already installed
+```
+
+    ## Loading required package: Matrix
+
+    ## Loaded glmnet 4.1-8
+
+``` r
+# Remove rows with missing values in the 'Survived' column
+TitanicData <- na.omit(TitanicData)
+
+# Set up the training control
+train_control <- trainControl(method = "cv", number = 5)
+
+# Train a logistic regression model
+model <- train(Survived ~ ., data = TitanicData, method = "glm", trControl = train_control, family = "binomial")
+
+# Print the model summary
+print(model)
+```
+
+    ## Generalized Linear Model 
+    ## 
+    ## 891 samples
+    ##   7 predictor
+    ## 
+    ## No pre-processing
+    ## Resampling: Cross-Validated (5 fold) 
+    ## Summary of sample sizes: 713, 713, 713, 713, 712 
+    ## Resampling results:
+    ## 
+    ##   RMSE      Rsquared   MAE      
+    ##   0.378456  0.3978329  0.2822639
