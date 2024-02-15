@@ -23,7 +23,7 @@ predict_titanic_survival <- function(Pclass, Sex, Age, SibSp, Parch, Fare, Embar
   
   # Create a data frame using the arguments
   to_be_predicted <- data.frame(
-    Pclass = as.factor(Pclass),
+    Pclass = as.numeric(Pclass),
     Sex = as.factor(Sex),
     Age = as.numeric(Age),
     SibSp = as.numeric(SibSp),
