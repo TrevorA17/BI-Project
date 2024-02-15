@@ -407,3 +407,108 @@ ggplot(TitanicData, aes(x = factor(Pclass), fill = factor(Sex))) +
 ```
 
 ![](TitanicSurvivalPrediction_files/figure-gfm/Multivariate%20Plots-3.png)<!-- -->
+
+``` r
+# Check for missing values in the dataset
+missing_values <- sapply(TitanicData, function(x) sum(is.na(x)))
+
+# Display columns with missing values and their counts
+missing_values_df <- data.frame(Column = names(missing_values), Missing_Values = missing_values)
+missing_values_df <- missing_values_df[missing_values_df$Missing_Values > 0, , drop = FALSE]
+
+# Print the result
+print(missing_values_df)
+```
+
+    ##            Column Missing_Values
+    ## Age           Age            177
+    ## Embarked Embarked              2
+
+``` r
+# Load the mice package
+library(mice)
+```
+
+    ## 
+    ## Attaching package: 'mice'
+
+    ## The following object is masked from 'package:stats':
+    ## 
+    ##     filter
+
+    ## The following objects are masked from 'package:base':
+    ## 
+    ##     cbind, rbind
+
+``` r
+# Impute missing values in numeric columns using mean imputation
+numeric_cols <- sapply(TitanicData, is.numeric)
+imputed_data_numeric <- complete(mice(TitanicData[, numeric_cols]))
+```
+
+    ## 
+    ##  iter imp variable
+    ##   1   1  Age
+    ##   1   2  Age
+    ##   1   3  Age
+    ##   1   4  Age
+    ##   1   5  Age
+    ##   2   1  Age
+    ##   2   2  Age
+    ##   2   3  Age
+    ##   2   4  Age
+    ##   2   5  Age
+    ##   3   1  Age
+    ##   3   2  Age
+    ##   3   3  Age
+    ##   3   4  Age
+    ##   3   5  Age
+    ##   4   1  Age
+    ##   4   2  Age
+    ##   4   3  Age
+    ##   4   4  Age
+    ##   4   5  Age
+    ##   5   1  Age
+    ##   5   2  Age
+    ##   5   3  Age
+    ##   5   4  Age
+    ##   5   5  Age
+
+``` r
+# Impute missing values in categorical columns using mode imputation
+categorical_cols <- sapply(TitanicData, is.factor)
+imputed_data_categorical <- complete(mice(TitanicData[, categorical_cols]))
+```
+
+    ## 
+    ##  iter imp variable
+    ##   1   1  Embarked
+    ##   1   2  Embarked
+    ##   1   3  Embarked
+    ##   1   4  Embarked
+    ##   1   5  Embarked
+    ##   2   1  Embarked
+    ##   2   2  Embarked
+    ##   2   3  Embarked
+    ##   2   4  Embarked
+    ##   2   5  Embarked
+    ##   3   1  Embarked
+    ##   3   2  Embarked
+    ##   3   3  Embarked
+    ##   3   4  Embarked
+    ##   3   5  Embarked
+    ##   4   1  Embarked
+    ##   4   2  Embarked
+    ##   4   3  Embarked
+    ##   4   4  Embarked
+    ##   4   5  Embarked
+    ##   5   1  Embarked
+    ##   5   2  Embarked
+    ##   5   3  Embarked
+    ##   5   4  Embarked
+    ##   5   5  Embarked
+
+``` r
+# Combine the imputed numeric and categorical datasets
+imputed_data <- cbind(imputed_data_numeric, imputed_data_categorical)
+```

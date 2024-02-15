@@ -222,3 +222,30 @@ ggplot(TitanicData, aes(x = factor(Pclass), fill = factor(Sex))) +
   theme_minimal()
 ```
 
+```{r Missing values}
+# Check for missing values in the dataset
+missing_values <- sapply(TitanicData, function(x) sum(is.na(x)))
+
+# Display columns with missing values and their counts
+missing_values_df <- data.frame(Column = names(missing_values), Missing_Values = missing_values)
+missing_values_df <- missing_values_df[missing_values_df$Missing_Values > 0, , drop = FALSE]
+
+# Print the result
+print(missing_values_df)
+```
+
+```{r Imputation}
+# Load the mice package
+library(mice)
+# Impute missing values in numeric columns using mean imputation
+numeric_cols <- sapply(TitanicData, is.numeric)
+imputed_data_numeric <- complete(mice(TitanicData[, numeric_cols]))
+
+# Impute missing values in categorical columns using mode imputation
+categorical_cols <- sapply(TitanicData, is.factor)
+imputed_data_categorical <- complete(mice(TitanicData[, categorical_cols]))
+
+# Combine the imputed numeric and categorical datasets
+imputed_data <- cbind(imputed_data_numeric, imputed_data_categorical)
+```
+
