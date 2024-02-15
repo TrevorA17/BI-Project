@@ -659,5 +659,5 @@ print(model)
     ## Summary of sample sizes: 713, 713, 713, 713, 712 
     ## Resampling results:
     ## 
-    ##   RMSE      Rsquared   MAE      
-    ##   0.378456  0.3978329  0.2822639
+    ##   RMSE       Rsquared   MAE      
+    ##   0.3765842  0.4028268  0.2808642
